@@ -4,7 +4,6 @@
     ViewBag.Title = "CheckOut";
 }
 
-<h2>CheckOut</h2>
 <div class="container" style="min-height:550px;">
     <div class="row">
         <center>
@@ -12,13 +11,15 @@
             @{
                 double bill = 0;
                 
-                if (Model !=null)
+                if(Model != null  )
                 { 
                     foreach (var product in Model)
                     {
                         bill += product.Price;
                     }
 
+                    HttpContext.Current.Session["Products"] = null;
+                    
                     if (bill == 0)
                     {
                         <h1>
